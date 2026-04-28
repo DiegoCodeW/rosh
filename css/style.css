@@ -121,7 +121,7 @@ a {
   align-items: center;
   padding: 1.5rem;
   border-bottom: var(--border-thick);
-  background-color: var(--color-mostaza);
+  background-color: var(--color-carbon);
 }
 
 .logo {
@@ -139,6 +139,7 @@ a {
 }
 
 .nav-links a {
+  color: var(--color-crema);
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.2rem;
@@ -153,7 +154,7 @@ a {
   left: 0;
   width: 0%;
   height: 4px;
-  background-color: var(--color-carbon);
+  background-color: var(--color-crema);
   transition: width 0.3s ease;
 }
 
