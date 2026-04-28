@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --cv-bg: #FAFAFA;
+  --cv-text: #222222;
+  --cv-text-light: #666666;
+  --cv-accent: #111111;
+  --cv-border: #E5E5E5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--cv-bg);
+  color: var(--cv-text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.cv-container {
+  max-width: 900px;
+  margin: 4rem auto;
+  background: #FFFFFF;
+  padding: 4rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border-radius: 8px;
+}
+
+/* Header */
+.cv-header {
+  border-bottom: 2px solid var(--cv-accent);
+  padding-bottom: 2rem;
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.cv-title h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.cv-title h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--cv-text-light);
+}
+
+.cv-contact {
+  text-align: right;
+  font-size: 0.95rem;
+  color: var(--cv-text-light);
+}
+
+.cv-contact a {
+  color: var(--cv-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.cv-contact a:hover {
+  text-decoration: underline;
+}
+
+/* Grid Layout */
+.cv-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+}
+
+/* Sections */
+.cv-section {
+  margin-bottom: 3rem;
+}
+
+.cv-section h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  color: var(--cv-accent);
+  border-bottom: 1px solid var(--cv-border);
+  padding-bottom: 0.5rem;
+}
+
+/* Items */
+.cv-item {
+  margin-bottom: 1.5rem;
+}
+
+.cv-item h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.cv-item .date {
+  font-size: 0.9rem;
+  color: var(--cv-text-light);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.cv-item p {
+  font-size: 0.95rem;
+  color: var(--cv-text-light);
+}
+
+/* Skills Tags */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  background: #F0F0F0;
+  color: var(--cv-text);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Return Link */
+.return-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: var(--cv-text-light);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.return-link:hover {
+  color: var(--cv-accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cv-container {
+    margin: 0;
+    padding: 2rem;
+    border-radius: 0;
+  }
+  .cv-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .cv-contact {
+    text-align: left;
+  }
+  .cv-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

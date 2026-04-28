@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Visual "Rush" (Bauhaus x Brutalismo)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --crema: #F4F1EA;
+      --carbon: #1E1E24;
+      --terracota: #C85A43;
+      --mostaza: #E0A936;
+      --azul: #365577;
+      --verde: #6E7F6B;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--crema);
+      color: var(--carbon);
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 60px;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      border-bottom: 8px solid var(--carbon);
+      padding-bottom: 10px;
+      margin-top: 0;
+      font-weight: 900;
+    }
+
+    p.intro {
+      font-size: 1.2rem;
+      margin-bottom: 50px;
+      line-height: 1.6;
+      max-width: 800px;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      margin-top: 60px;
+      margin-bottom: 30px;
+      display: inline-block;
+      background: var(--carbon);
+      color: var(--crema);
+      padding: 5px 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 40px;
+    }
+
+    .card {
+      border: 6px solid var(--carbon);
+      background: #fff;
+      box-shadow: 12px 12px 0px var(--carbon);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translate(-6px, -6px);
+      box-shadow: 18px 18px 0px var(--carbon);
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      width: 100%;
+      text-align: center;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    /* CONTENEDOR DE ICONO */
+    .icon {
+      width: 140px;
+      height: 140px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    /* 1. Cocina */
+    .ico-cocina .plato {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--carbon);
+      position: absolute;
+    }
+
+    .ico-cocina .cuchillo {
+      width: 130px;
+      height: 16px;
+      background: var(--crema);
+      position: absolute;
+      transform: rotate(-45deg);
+      border: 5px solid var(--carbon);
+    }
+
+    /* 2. Barra */
+    .ico-barra {
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+
+    .ico-barra .copas {
+      display: flex;
+      gap: 15px;
+      margin-bottom: -15px;
+    }
+
+    .ico-barra .copas div {
+      width: 30px;
+      height: 30px;
+      background: var(--azul);
+      border-radius: 50%;
+      border: 5px solid var(--carbon);
+      z-index: 2;
+    }
+
+    .ico-barra .mesa {
+      width: 120px;
+      height: 50px;
+      background: var(--azul);
+      border: 5px solid var(--carbon);
+    }
+
+    /* 3. Escenario */
+    .ico-esc {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      height: 90px;
+    }
+
+    .ico-esc div {
+      width: 30px;
+      background: var(--mostaza);
+      border: 5px solid var(--carbon);
+    }
+
+    .ico-esc .b1 {
+      height: 40px;
+    }
+
+    .ico-esc .b2 {
+      height: 90px;
+    }
+
+    .ico-esc .b3 {
+      height: 65px;
+    }
+
+    /* 4. Baño */
+    .ico-bano {
+      background: var(--carbon);
+      width: 110px;
+      height: 110px;
+      color: var(--crema);
+      font-size: 3.5rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: -4px;
+    }
+
+    /* 5. Entrada */
+    .ico-entrada {
+      width: 90px;
+      height: 120px;
+      background: var(--terracota);
+      border: 5px solid var(--carbon);
+      border-top-left-radius: 45px;
+      border-top-right-radius: 45px;
+      border-bottom: none;
+    }
+
+    .ico-entrada-base {
+      width: 110px;
+      height: 10px;
+      background: var(--carbon);
+      position: absolute;
+      bottom: 10px;
+    }
+
+    /* 6. Staff (Estrella 4 Puntas Brutalista) */
+    .ico-staff .cruz {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      transform: rotate(45deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ico-staff .v {
+      position: absolute;
+      width: 30px;
+      height: 100px;
+      background: var(--carbon);
+    }
+
+    .ico-staff .h {
+      position: absolute;
+      width: 100px;
+      height: 30px;
+      background: var(--carbon);
+    }
+
+    /* 7. Bebidas Calientes */
+    .ico-caliente {
+      position: relative;
+    }
+
+    .ico-caliente .taza {
+      position: absolute;
+      bottom: 10px;
+      left: 15px;
+      width: 110px;
+      height: 50px;
+      background: var(--carbon);
+      border-bottom-left-radius: 55px;
+      border-bottom-right-radius: 55px;
+    }
+
+    .ico-caliente .humo1,
+    .ico-caliente .humo2 {
+      position: absolute;
+      width: 15px;
+      height: 40px;
+      background: var(--carbon);
+    }
+
+    .ico-caliente .humo1 {
+      bottom: 75px;
+      left: 45px;
+      transform: skewX(-20deg);
+    }
+
+    .ico-caliente .humo2 {
+      bottom: 85px;
+      left: 75px;
+      transform: skewX(20deg);
+    }
+
+    /* 8. Bebidas Frías */
+    .ico-fria {
+      position: relative;
+      width: 80px;
+      height: 110px;
+      background: var(--terracota);
+      border: 5px solid var(--carbon);
+      overflow: hidden;
+    }
+
+    .ico-fria::after {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 12px;
+      background: var(--carbon);
+      transform: rotate(55deg);
+      top: 40px;
+      left: -30px;
+    }
+
+    /* 9. Comida */
+    .ico-comida {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .ico-comida .cuadro {
+      width: 50px;
+      height: 50px;
+      background: var(--verde);
+      border: 5px solid var(--carbon);
+    }
+
+    .ico-comida .circulo {
+      width: 55px;
+      height: 55px;
+      background: var(--carbon);
+      border-radius: 50%;
+    }
+
+    /* 10. Snacks */
+    .ico-snacks {
+      position: relative;
+      width: 100px;
+      height: 100px;
+    }
+
+    .ico-snacks .t {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+    }
+
+    .ico-snacks .t1 {
+      top: 10px;
+      left: 15px;
+      border-bottom: 35px solid var(--verde);
+    }
+
+    .ico-snacks .t2 {
+      top: 55px;
+      left: 0;
+      border-bottom: 25px solid var(--verde);
+      transform: rotate(45deg);
+    }
+
+    .ico-snacks .t3 {
+      top: 45px;
+      left: 55px;
+      border-top: 45px solid var(--verde);
+      transform: rotate(-20deg);
+    }
+
+    /* 11. Postres */
+    .ico-postre {
+      position: relative;
+      width: 100px;
+      height: 50px;
+      background: var(--terracota);
+      border: 5px solid var(--carbon);
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+      margin-top: 50px;
+    }
+
+    .ico-postre::after {
+      content: "";
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background: var(--carbon);
+      border-radius: 50%;
+      top: -12px;
+      right: 10px;
+    }
+
+    /* 12. Alcohol */
+    .ico-alcohol {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .ico-alcohol .copa {
+      width: 0;
+      height: 0;
+      border-left: 45px solid transparent;
+      border-right: 45px solid transparent;
+      border-top: 50px solid var(--carbon);
+      position: absolute;
+      top: 10px;
+    }
+
+    .ico-alcohol .tallo {
+      width: 10px;
+      height: 40px;
+      background: var(--carbon);
+      position: absolute;
+      top: 60px;
+    }
+
+    .ico-alcohol .base {
+      width: 40px;
+      height: 10px;
+      background: var(--carbon);
+      position: absolute;
+      bottom: 0;
+    }
+
+    /* PATTERNS SECTION */
+    .pattern-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 40px;
+    }
+
+    .pattern-box {
+      height: 300px;
+      border: 8px solid var(--carbon);
+      box-shadow: 15px 15px 0px var(--carbon);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pattern-box h3 {
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      background: var(--carbon);
+      color: var(--crema);
+      padding: 10px 20px;
+      margin: 0;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    /* Patrón 1: Grid Arquitectónico */
+    .p-grid {
+      background-color: var(--crema);
+      background-image:
+        linear-gradient(var(--carbon) 3px, transparent 3px),
+        linear-gradient(90deg, var(--carbon) 3px, transparent 3px);
+      background-size: 40px 40px;
+    }
+
+    /* Patrón 2: Ruido y Bloques (Mostaza) */
+    .p-mostaza {
+      background-color: var(--mostaza);
+      /* Simulando fragmentación de bloques asimétricos */
+      background-image:
+        linear-gradient(90deg, transparent 50%, rgba(200, 90, 67, 0.3) 50%),
+        linear-gradient(rgba(54, 85, 119, 0.3) 50%, transparent 50%);
+      background-size: 100px 100px;
+    }
+
+    .p-mostaza::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E");
+    }
+
+    /* Patrón 3: Ondas Escalonadas */
+    .p-onda {
+      background-color: var(--verde);
+      background-image:
+        linear-gradient(45deg, var(--carbon) 25%, transparent 25%, transparent 75%, var(--carbon) 75%, var(--carbon)),
+        linear-gradient(45deg, var(--carbon) 25%, transparent 25%, transparent 75%, var(--carbon) 75%, var(--carbon));
+      background-size: 60px 60px;
+      background-position: 0 0, 30px 30px;
+    }
+
+    /* Patrón 4: Conexión Social (azul y Puntos) */
+    .p-puntos {
+      background-color: var(--azul);
+      background-image: radial-gradient(var(--crema) 30%, transparent 30%);
+      background-size: 50px 50px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Símbolos & Patterns</h1>
+  <p class="intro">
+    Implementación en vivo (HTML/CSS) del sistema de señalética para <strong>Rush</strong>. <br>
+    Las formas ilustran los principios del <em>Brutalismo Suave</em> (sombras muy definidas, bordes súper gruesos,
+    trazos limpios de geometría pura) y la <em>Paleta de Color Oficial</em>.
+  </p>
+
+  <h2>Iconografía por Zonas</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Cocina</h3>
+      <div class="icon ico-cocina">
+        <div class="plato"></div>
+        <div class="cuchillo"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Caja / Barra</h3>
+      <div class="icon ico-barra">
+        <div class="copas">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="mesa"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Escenario</h3>
+      <div class="icon ico-esc">
+        <div class="b1"></div>
+        <div class="b2"></div>
+        <div class="b3"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>WC / Baños</h3>
+      <div class="icon">
+        <div class="ico-bano">WC</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Entrada</h3>
+      <div class="icon">
+        <div class="ico-entrada"></div>
+        <div class="ico-entrada-base"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Staff</h3>
+      <div class="icon ico-staff">
+        <div class="cruz">
+          <div class="v"></div>
+          <div class="h"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Bebidas & Menú</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Bebidas Calientes</h3>
+      <div class="icon ico-caliente">
+        <div class="taza"></div>
+        <div class="humo1"></div>
+        <div class="humo2"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Bebidas Frías</h3>
+      <div class="icon">
+        <div class="ico-fria"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Con Alcohol</h3>
+      <div class="icon ico-alcohol">
+        <div class="copa"></div>
+        <div class="tallo"></div>
+        <div class="base"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Comida Sólida</h3>
+      <div class="icon ico-comida">
+        <div class="cuadro"></div>
+        <div class="circulo"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Snacks</h3>
+      <div class="icon ico-snacks">
+        <div class="t t1"></div>
+        <div class="t t2"></div>
+        <div class="t t3"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Postres</h3>
+      <div class="icon">
+        <div class="ico-postre"></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Texturas (Patterns)</h2>
+  <div class="pattern-grid">
+    <div class="pattern-box p-grid">
+      <h3>01. Retícula (Tíckets / Individuales)</h3>
+    </div>
+    <div class="pattern-box p-mostaza">
+      <h3>02. Energía + Ruido (Posters Música)</h3>
+    </div>
+    <div class="pattern-box p-onda">
+      <h3>03. Ondas Escalonadas (Empaques)</h3>
+    </div>
+    <div class="pattern-box p-puntos">
+      <h3>04. Intersección Social (Decoración Visual)</h3>
+    </div>
+  </div>
+
+</body>
+
+</html>
