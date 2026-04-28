@@ -1,14 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
 
+@font-face {
+  font-family: 'Warlem';
+  src: url('../warlem.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --color-crema: #F4F1EA;
   --color-carbon: #1E1E24;
   --color-terracota: #ce3d4d;
   --color-azul: #37a5bd;
 
-  --font-display: 'Space Grotesk', sans-serif;
-  /* Represents "Warlem" */
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Avenir Next', 'Inter', sans-serif;
+  --font-body: 'Avenir Next', 'Inter', sans-serif;
 
   --border-thick: 4px solid var(--color-carbon);
   --border-thin: 2px solid var(--color-carbon);
@@ -118,14 +125,12 @@ a {
 }
 
 .logo {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: -0.05em;
   background: var(--color-carbon);
   color: var(--color-crema);
   padding: 0.2rem 1rem;
   border: var(--border-thick);
+  width: 220px;
+  height: auto;
 }
 
 .nav-links {
